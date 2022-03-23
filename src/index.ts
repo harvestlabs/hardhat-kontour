@@ -20,14 +20,17 @@ const deploy: ActionType<{}> = async () => {
   await Commands.deploy();
 };
 
-task("kontour:init", "Initializes a Kontour configuration file").setAction(
-  init
-);
+task(
+  "kontour:init",
+  "Initializes the Kontour configuration file .quikdrawconfig"
+).setAction(init);
 
 task(
   "kontour:go",
-  "Compiles and sends contracts to your Kontour instance"
-).setAction(go);
+  "Compiles and sends contracts to your Kontour project, with optional project URL"
+)
+  .addPositionalParam("url", "The project URL", null, null, true)
+  .setAction(go);
 
 task(
   "kontour:deploy",
