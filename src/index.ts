@@ -1,4 +1,5 @@
 import { extendEnvironment, task } from "hardhat/config";
+import { string } from "hardhat/internal/core/params/argumentTypes";
 import { lazyObject } from "hardhat/plugins";
 import { ActionType } from "hardhat/types";
 import { Commands } from "quikdraw";
@@ -13,8 +14,8 @@ import { Commands } from "quikdraw";
 const init: ActionType<{}> = async () => {
   await Commands.init();
 };
-const go: ActionType<{}> = async () => {
-  await Commands.go();
+const go: ActionType<{ url: string }> = async (args) => {
+  await Commands.go(args.url && args.url !== "" ? [args.url] : []);
 };
 const deploy: ActionType<{}> = async () => {
   await Commands.deploy();
@@ -29,7 +30,7 @@ task(
   "kontour:go",
   "Compiles and sends contracts to your Kontour project, with optional project URL"
 )
-  .addPositionalParam("url", "The project URL", null, null, true)
+  .addPositionalParam("url", "The project URL", "", string, true)
   .setAction(go);
 
 task(

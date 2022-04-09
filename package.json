@@ -1,6 +1,6 @@
 {
   "name": "hardhat-kontour",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "The official Kontour plugin for hardhat",
   "repository": "github:harvestlabs/hardhat-kontour",
   "author": "Harvest Labs Inc",
@@ -43,6 +43,6 @@
     "hardhat": "^2.0.0"
   },
   "dependencies": {
-    "quikdraw": "0.1.16"
+    "quikdraw": "0.2.0"
   }
 }
